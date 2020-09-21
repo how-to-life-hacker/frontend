@@ -1,6 +1,7 @@
 import React from "react";
 import "./Forms.css";
 import { BrowserRouter as Route, Link } from "react-router-dom";
+console.log(Route)
 
 export default function Forms() {
   return (
