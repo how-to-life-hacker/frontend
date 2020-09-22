@@ -55,7 +55,7 @@ export default function Forms() {
       setDisabled(!valid)
     })
   }, [formValues])
-
+  console.log(currentUser)
   return (
     <div>
       <Router>

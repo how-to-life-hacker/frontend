@@ -16,14 +16,17 @@ export default function Signup(props) {
   function onSubmit(event) {
     event.preventDefault();
 
-
-// ---------------------------------
     axios.post('https://life-hacker-backend.herokuapp.com/register', formValues)
     .then(res=> {
-      console.log(res.data)
-// ---------------------------------
-
-
+      axios.get(`https://life-hacker-backend.herokuapp.com/user/${res.data.data.id}`)
+      .then(resolved => {
+        console.log(resolved.data.user)
+        setCurrentUser(initialUser)
+        setCurrentUser([resolved.data.user])
+      }) 
+      .catch(error => {
+        console.log(error)
+      })
     })
     .catch(err => {
       console.log(err)
@@ -31,9 +34,6 @@ export default function Signup(props) {
     .finally(() => {
       setFormValues(initialFormValues)
     })
-
-    setCurrentUser(initialUser)
-    setCurrentUser([formValues])
   }
 
   return (
