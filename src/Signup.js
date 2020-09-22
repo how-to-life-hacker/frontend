@@ -12,6 +12,8 @@ export default function Signup(props) {
     updateForm(name, value);
   }
 
+  
+
   return (
     <div className="signup">
       <div className="form-links">

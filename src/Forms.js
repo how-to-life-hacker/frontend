@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./Forms.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import * as yup from "yup";
+import axios from 'axios';
 
 import Signin from "./Signin";
 import Signup from "./Signup";
-import CurrentUser from "./CurrentUser"
+import DisplayUser from "./DisplayUser"
 
 import schema from "./formSchema";
 
@@ -21,23 +22,38 @@ const initialFormErrors = {
   password: "",
 };
 
-const initialUsers = []
+const initialUser = []
 const initiallyDisabled = true
 
 export default function Forms() {
 
   const [ formValues, setFormValues ] = useState(initialFormValues);
   const [ formErrors, setFormErrors ] = useState(initialFormErrors);
-  const [ users, setUsers ] = useState(initialUsers)
+  const [ currentUser, setcurrentUser ] = useState(initialUser)
   const [ disabled, setDisabled ] = useState(initiallyDisabled)
 
   function onSubmit(event) {
     event.preventDefault();
-    // Axios.post here
 
-    setUsers(initialUsers)
-    setUsers([formValues])
-    setFormValues(initialFormValues)
+
+// ---------------------------------
+    axios.post('https://life-hacker-backend.herokuapp.com/register', formValues)
+    .then(res=> {
+      console.log(res.data)
+// ---------------------------------
+
+
+    })
+    .catch(err => {
+      console.log(err)
+    })
+    .finally(() => {
+      setFormValues(initialFormValues)
+    })
+
+    setcurrentUser(initialUser)
+    setcurrentUser([formValues])
+    // setFormValues(initialFormValues)
   }
 
   function validation(name, value) {
@@ -85,8 +101,8 @@ export default function Forms() {
             <p className="error">{formErrors.password}</p>
 
             {
-              users.map(user => {
-                return <CurrentUser user={user} key={user} />
+              currentUser.map(user => {
+                return <DisplayUser user={user} key={user} />
               })
             }
 

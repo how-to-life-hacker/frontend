@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CurrentUser(props) {
+export default function DisplayUser(props) {
     const { user } = props
     const { email } = user
     return (
