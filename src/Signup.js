@@ -1,15 +1,44 @@
 import React from "react";
 import "./Forms.css";
 import { BrowserRouter as Route, Link } from "react-router-dom";
-console.log(Route)
+import axios from "axios";
+console.log(Route);
 
 export default function Signup(props) {
-
-  const { formValues, updateForm, onSubmit, disabled } = props;
+  const {
+    formValues,
+    updateForm,
+    disabled,
+    setCurrentUser,
+    setFormValues,
+    initialFormValues,
+    initialUser,
+  } = props;
 
   function onChange(evt) {
     const { name, value } = evt.target;
     updateForm(name, value);
+  }
+
+  function onSubmit(event) {
+    event.preventDefault();
+
+    // ---------------------------------
+    axios
+      .post("https://life-hacker-backend.herokuapp.com/register", formValues)
+      .then((res) => {
+        console.log(res.data);
+        // ---------------------------------
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setFormValues(initialFormValues);
+      });
+
+    setCurrentUser(initialUser);
+    setCurrentUser([formValues]);
   }
 
   return (
@@ -33,7 +62,7 @@ export default function Signup(props) {
         </label>
 
         <label>
-          Username(optional):
+          Username:
           <span> </span>
           <input
             type="text"
@@ -56,7 +85,9 @@ export default function Signup(props) {
           <br />
         </label>
 
-        <button type="submit" className="submitButton" disabled={disabled}>Submit</button>
+        <button type="submit" className="submitButton" disabled={disabled}>
+          Submit
+        </button>
       </form>
     </div>
   );
