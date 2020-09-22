@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./Forms.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import * as yup from "yup";
-import axios from 'axios';
 
 import Signin from "./Signin";
 import Signup from "./Signup";
