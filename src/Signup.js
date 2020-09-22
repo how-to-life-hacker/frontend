@@ -7,7 +7,7 @@ export default function Forms() {
   return (
     <div className="signup">
       <div className="form-links">
-        <Link to="/login">Login </Link>
+        <Link to="/signin">Sign In </Link>
         <Link to="/signup">Sign Up</Link>
       </div>
       <h3>Sign Up Here</h3>

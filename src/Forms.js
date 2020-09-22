@@ -1,11 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Forms.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import Login from "./Login";
+import Signin from "./Signin";
 import Signup from "./Signup";
 
+import schema from './formSchema'
+
+const initialFormValues = {
+    email: "",
+    username: "",
+    password: "",
+}
+
+const initialFormErrors = {
+    email: "",
+    username: "",
+    password: "",
+}
 export default function Forms() {
+
+    const [ formValues, setFormValues ] = useState(initialFormValues)
+    const [ formErrors, setFormErrors ] = useState(initialFormErrors)
+
+
+    function onSubmit(event) {
+      event.preventDefault()
+      // Axios.post here
+    }
+
+
+    function updateForm(inputName, inputValue) {
+        setFormValues({...formValues, [inputName]: inputValue})
+    }
+
+
+
   return (
     <div>
       <Router>
@@ -13,10 +43,10 @@ export default function Forms() {
         <span> </span>
         <Link to="/signup">Signup</Link>
         <span> </span>
-        <Link to="/login">Login</Link>
+        <Link to="/signin">Login</Link>
         <Switch>
-          <Route path="/login">
-            <Login />
+          <Route path="/signin">
+            <Signin formValues={formValues} updateForm={updateForm} onSubmit={onSubmit} />
           </Route>
           <Route path="/signup">
             <Signup />
