@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 export default function DisplayUser(props) {
-    const { user } = props
-    const { email } = user
-    return (
-        <div>
-            <p>Currently Logged In As: {email} </p>
-        </div>
-    )
+  const { user } = props;
+  const { email } = user;
+  return (
+    <div>
+      <p>Currently Logged In As: {email} </p>
+    </div>
+  );
 }

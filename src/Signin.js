@@ -1,11 +1,19 @@
 import React from "react";
 import "./Forms.css";
 import { BrowserRouter as Route, Link } from "react-router-dom";
-import axios from 'axios'
+import axios from "axios";
 console.log(Route);
 
 export default function Signin(props) {
-  const { formValues, updateForm, disabled, setCurrentUser, setFormValues, initialFormValues, initialUser } = props;
+  const {
+    formValues,
+    updateForm,
+    disabled,
+    setCurrentUser,
+    setFormValues,
+    initialFormValues,
+    initialUser,
+  } = props;
 
   function onChange(evt) {
     const { name, value } = evt.target;
@@ -15,22 +23,21 @@ export default function Signin(props) {
   function onSubmit(event) {
     event.preventDefault();
 
-    axios.post('https://life-hacker-backend.herokuapp.com/login', formValues)
-    .then(res=> {
-      console.log(res.data)
+    axios
+      .post("https://life-hacker-backend.herokuapp.com/login", formValues)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setFormValues(initialFormValues);
+      });
 
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    .finally(() => {
-      setFormValues(initialFormValues)
-    })
-
-    setCurrentUser(initialUser)
-    setCurrentUser([formValues])
+    setCurrentUser(initialUser);
+    setCurrentUser([formValues]);
   }
-
 
   return (
     <div className="signin">
@@ -76,7 +83,9 @@ export default function Signin(props) {
           <br />
         </label>
 
-        <button type="submit" className="submitButton" disabled={disabled} >Submit</button>
+        <button type="submit" className="submitButton" disabled={disabled}>
+          Submit
+        </button>
       </form>
     </div>
   );

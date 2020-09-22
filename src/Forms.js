@@ -5,7 +5,7 @@ import * as yup from "yup";
 
 import Signin from "./Signin";
 import Signup from "./Signup";
-import DisplayUser from "./DisplayUser"
+import DisplayUser from "./DisplayUser";
 
 import schema from "./formSchema";
 
@@ -21,16 +21,14 @@ const initialFormErrors = {
   password: "",
 };
 
-const initialUser = []
-const initiallyDisabled = true
+const initialUser = [];
+const initiallyDisabled = true;
 
 export default function Forms() {
-
-  const [ formValues, setFormValues ] = useState(initialFormValues);
-  const [ formErrors, setFormErrors ] = useState(initialFormErrors);
-  const [ currentUser, setCurrentUser ] = useState(initialUser)
-  const [ disabled, setDisabled ] = useState(initiallyDisabled)
-
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [formErrors, setFormErrors] = useState(initialFormErrors);
+  const [currentUser, setCurrentUser] = useState(initialUser);
+  const [disabled, setDisabled] = useState(initiallyDisabled);
 
   function validation(name, value) {
     yup
@@ -50,11 +48,10 @@ export default function Forms() {
   }
 
   useEffect(() => {
-    schema.isValid(formValues)
-    .then(valid => {
-      setDisabled(!valid)
-    })
-  }, [formValues])
+    schema.isValid(formValues).then((valid) => {
+      setDisabled(!valid);
+    });
+  }, [formValues]);
 
   return (
     <div>
@@ -79,16 +76,12 @@ export default function Forms() {
             <p className="error">{formErrors.username}</p>
             <p className="error">{formErrors.password}</p>
 
-            {
-              currentUser.map(user => {
-                return <DisplayUser user={user} key={user} />
-              })
-            }
-
-
+            {currentUser.map((user) => {
+              return <DisplayUser user={user} key={user} />;
+            })}
           </Route>
           <Route path="/signup">
-            <Signup 
+            <Signup
               formValues={formValues}
               updateForm={updateForm}
               disabled={disabled}
