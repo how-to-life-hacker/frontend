@@ -5,7 +5,7 @@ import * as yup from "yup";
 
 import Signin from "./Signin";
 import Signup from "./Signup";
-import DisplayUser from "./DisplayUser"
+import DisplayUser from "./DisplayUser";
 
 import schema from "./formSchema";
 
@@ -21,16 +21,14 @@ const initialFormErrors = {
   password: "",
 };
 
-const initialUser = []
-const initiallyDisabled = true
+const initialUser = [];
+const initiallyDisabled = true;
 
 export default function Forms() {
-
-  const [ formValues, setFormValues ] = useState(initialFormValues);
-  const [ formErrors, setFormErrors ] = useState(initialFormErrors);
-  const [ currentUser, setCurrentUser ] = useState(initialUser)
-  const [ disabled, setDisabled ] = useState(initiallyDisabled)
-
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [formErrors, setFormErrors] = useState(initialFormErrors);
+  const [currentUser, setCurrentUser] = useState(initialUser);
+  const [disabled, setDisabled] = useState(initiallyDisabled);
 
   function validation(name, value) {
     yup
@@ -92,7 +90,7 @@ export default function Forms() {
 
           </Route>
           <Route path="/signup">
-            <Signup 
+            <Signup
               formValues={formValues}
               updateForm={updateForm}
               disabled={disabled}

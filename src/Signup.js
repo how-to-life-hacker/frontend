@@ -2,11 +2,18 @@ import React from "react";
 import "./Forms.css";
 import { BrowserRouter as Route, Link } from "react-router-dom";
 import axios from "axios";
-console.log(Route)
+console.log(Route);
 
 export default function Signup(props) {
-
-  const { formValues, updateForm, disabled, setCurrentUser, setFormValues, initialFormValues, initialUser } = props;
+  const {
+    formValues,
+    updateForm,
+    disabled,
+    setCurrentUser,
+    setFormValues,
+    initialFormValues,
+    initialUser,
+  } = props;
 
   function onChange(evt) {
     const { name, value } = evt.target;
@@ -80,7 +87,9 @@ export default function Signup(props) {
           <br />
         </label>
 
-        <button type="submit" className="submitButton" disabled={disabled}>Submit</button>
+        <button type="submit" className="submitButton" disabled={disabled}>
+          Submit
+        </button>
       </form>
     </div>
   );
