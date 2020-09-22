@@ -4,7 +4,7 @@ import { BrowserRouter as Route, Link } from "react-router-dom";
 console.log(Route);
 
 export default function Signin(props) {
-  const { formValues, updateForm, onSubmit } = props;
+  const { formValues, updateForm, onSubmit, disabled } = props;
 
   function onChange(evt) {
     const { name, value } = evt.target;
@@ -43,7 +43,7 @@ export default function Signin(props) {
           <br />
         </label>
 
-        <button type="submit" className="submitButton">Submit</button>
+        <button type="submit" className="submitButton" disabled={disabled} >Submit</button>
       </form>
     </div>
   );

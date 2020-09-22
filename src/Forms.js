@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Forms.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import * as yup from "yup";
@@ -22,12 +22,14 @@ const initialFormErrors = {
 };
 
 const initialUsers = []
+const initiallyDisabled = true
 
 export default function Forms() {
 
   const [ formValues, setFormValues ] = useState(initialFormValues);
   const [ formErrors, setFormErrors ] = useState(initialFormErrors);
   const [ users, setUsers ] = useState(initialUsers)
+  const [ disabled, setDisabled ] = useState(initiallyDisabled)
 
   function onSubmit(event) {
     event.preventDefault();
@@ -55,6 +57,13 @@ export default function Forms() {
     setFormValues({ ...formValues, [inputName]: inputValue });
   }
 
+  useEffect(() => {
+    schema.isValid(formValues)
+    .then(valid => {
+      setDisabled(!valid)
+    })
+  }, [formValues])
+
   return (
     <div>
       <Router>
@@ -69,6 +78,7 @@ export default function Forms() {
               formValues={formValues}
               updateForm={updateForm}
               onSubmit={onSubmit}
+              disabled={disabled}
             />
             <p className="error">{formErrors.email}</p>
             <p className="error">{formErrors.username}</p>
@@ -87,6 +97,7 @@ export default function Forms() {
               formValues={formValues}
               updateForm={updateForm}
               onSubmit={onSubmit}
+              disabled={disabled}
             />
             <p className="error">{formErrors.email}</p>
             <p className="error">{formErrors.username}</p>
