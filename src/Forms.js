@@ -29,32 +29,9 @@ export default function Forms() {
 
   const [ formValues, setFormValues ] = useState(initialFormValues);
   const [ formErrors, setFormErrors ] = useState(initialFormErrors);
-  const [ currentUser, setcurrentUser ] = useState(initialUser)
+  const [ currentUser, setCurrentUser ] = useState(initialUser)
   const [ disabled, setDisabled ] = useState(initiallyDisabled)
 
-  function onSubmit(event) {
-    event.preventDefault();
-
-
-// ---------------------------------
-    axios.post('https://life-hacker-backend.herokuapp.com/register', formValues)
-    .then(res=> {
-      console.log(res.data)
-// ---------------------------------
-
-
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    .finally(() => {
-      setFormValues(initialFormValues)
-    })
-
-    setcurrentUser(initialUser)
-    setcurrentUser([formValues])
-    // setFormValues(initialFormValues)
-  }
 
   function validation(name, value) {
     yup
@@ -93,8 +70,11 @@ export default function Forms() {
             <Signin
               formValues={formValues}
               updateForm={updateForm}
-              onSubmit={onSubmit}
               disabled={disabled}
+              setCurrentUser={setCurrentUser}
+              setFormValues={setFormValues}
+              initialFormValues={initialFormValues}
+              initialUser={initialUser}
             />
             <p className="error">{formErrors.email}</p>
             <p className="error">{formErrors.username}</p>
@@ -112,8 +92,11 @@ export default function Forms() {
             <Signup 
               formValues={formValues}
               updateForm={updateForm}
-              onSubmit={onSubmit}
               disabled={disabled}
+              setCurrentUser={setCurrentUser}
+              setFormValues={setFormValues}
+              initialFormValues={initialFormValues}
+              initialUser={initialUser}
             />
             <p className="error">{formErrors.email}</p>
             <p className="error">{formErrors.username}</p>
