@@ -80,6 +80,10 @@ export default function Forms() {
             <p className="error">{formErrors.password}</p>
 
             {
+              console.log("CURRENTUSER", currentUser)
+            }
+
+            {
               currentUser.map(user => {
                 return <DisplayUser user={user} key={user} />
               })
