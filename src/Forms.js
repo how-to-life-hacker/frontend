@@ -48,11 +48,12 @@ export default function Forms() {
   }
 
   useEffect(() => {
-    schema.isValid(formValues).then((valid) => {
-      setDisabled(!valid);
-    });
-  }, [formValues]);
-
+    schema.isValid(formValues)
+    .then(valid => {
+      setDisabled(!valid)
+    })
+  }, [formValues])
+  console.log(currentUser)
   return (
     <div>
       <Router>
@@ -76,9 +77,17 @@ export default function Forms() {
             <p className="error">{formErrors.username}</p>
             <p className="error">{formErrors.password}</p>
 
-            {currentUser.map((user) => {
-              return <DisplayUser user={user} key={user} />;
-            })}
+            {
+              console.log("CURRENTUSER", currentUser)
+            }
+
+            {
+              currentUser.map(user => {
+                return <DisplayUser user={user} key={user} />
+              })
+            }
+
+
           </Route>
           <Route path="/signup">
             <Signup
