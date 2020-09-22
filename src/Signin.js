@@ -20,12 +20,12 @@ export default function Signin(props) {
       <h3>Log In Here</h3>
       <form onSubmit={onSubmit}>
         <label>
-          Username:
+          Email:
           <span> </span>
           <input
             type="text"
-            name="username"
-            value={formValues.username}
+            name="email"
+            value={formValues.email}
             onChange={onChange}
           />
           <br />
