@@ -48,6 +48,12 @@ export default function AddHowTo({ howtoList, setHowToList }) {
                 value={formValues.description}
                 onChange={onChange}
             />
+            <input
+                name='user_id'
+                type='id'
+                value={formValues.user_id}
+                onChange={onChange}
+            />
 
             <button>submit</button>
         </form>

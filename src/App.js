@@ -18,26 +18,29 @@ import { Route, Link } from "react-router-dom";
 import SavedHowTos from "./components/SavedHowTos";
 import HowToList from "./components/HowToList";
 import HowTos from "./components/HowTos";
-import axios from "axios";
 import EditHowTo from "./components/EditHowTo";
 import AddHowTo from "./components/AddHowTo";
 import Forms from "./Forms";
+import { axiosWithAuth } from "./utils/axiosWithAuth";
 const App = () => {
   const [savedHowTos, setSavedHowTos] = useState([]);
   const [howtoList, setHowToList] = useState([]);
 
   const getHowToList = () => {
-    axios
-      .get("http://localhost:5000/api/howtos")
-      .then((res) => setHowToList(res.data))
+    axiosWithAuth()
+      .get("/howto")
+      .then((res) => setHowToList(res.data.howto))
       .catch((err) => console.log(err.response));
   };
+
+  // console.log(getHowToList())
 
   const addToSavedHowTos = (howto) => {
     setSavedHowTos([...savedHowTos, howto]);
   };
 
   useEffect(() => {
+    console.log("heres the list")
     getHowToList();
   }, []);
 

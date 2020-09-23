@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-const initialFormValues = {
-    title: '',
-    category: '',
-    description: ''
-}
+// const initialFormValues = {
+//     title: '',
+//     category: '',
+//     description: ''
+// }
 
 export default function EditHowTo({ howtoList, setHowToList }) {
     let { id } = useParams();
@@ -60,6 +60,12 @@ export default function EditHowTo({ howtoList, setHowToList }) {
                 name='description'
                 type='text'
                 value={formValues.description}
+                onChange={onChange}
+            />
+            <input
+                name='user_id'
+                type='id'
+                value={formValues.user_id}
                 onChange={onChange}
             />
             <button>submit</button>

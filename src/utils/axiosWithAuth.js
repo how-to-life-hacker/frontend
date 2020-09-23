@@ -4,9 +4,9 @@ export function axiosWithAuth() {
     const token = localStorage.getItem('token');
 
     return axios.create({
-        baseURL: "http://localhost:5000",
+        baseURL: "https://life-hacker-backend.herokuapp.com",
         headers: {
-            Authorization: `${token}`
+            Authorization: token
         }
     });
 };
