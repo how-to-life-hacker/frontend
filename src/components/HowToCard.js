@@ -2,6 +2,7 @@ import React from 'react';
 import styles from "styled-components";
 import { Link } from "react-router-dom";
 import EditHowTo from "./EditHowTo";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const HowToStyler = styles.div`
 background-color: #CDDFD9;
@@ -9,6 +10,17 @@ background-color: #CDDFD9;
 
 const HowToCard = props => {
     const { title, category, description, user_id } = props.howto;
+
+  function onClick(event) {
+    axiosWithAuth()
+      .delete(`/howto/${props.howto.id}`)
+      .then((res) => {
+        window.location.reload();
+      });
+  }
+
+  console.log(props)
+
     return (
       <div className="howto-card">
         <HowToStyler>
@@ -23,6 +35,7 @@ const HowToCard = props => {
             User ID: <strong>{user_id}</strong>
           </div>
         </HowToStyler>
+        <button onClick={onClick}>Delete</button>
         {/* <EditHowTo /> */}
       </div>
     );

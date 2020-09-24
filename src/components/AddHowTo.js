@@ -62,7 +62,7 @@ export default function AddHowTo({ howtoList, setHowToList }) {
         placeholder="Enter User ID"
       />
 
-      <button>submit</button>
+        <button>Submit</button>
     </form>
     </div>
   );
