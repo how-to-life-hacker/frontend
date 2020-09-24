@@ -17,26 +17,6 @@ function App() {
     const [savedHowTos, setSavedHowTos] = useState([]);
     const [howtoList, setHowToList] = useState([]);
 
-  //   const getHowToList = (() => {
-  //     axiosWithAuth().get("/howto")
-  //     .then((res) => {
-  //       setHowToList(res.data.howto);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
-
-    const addToSavedHowTos = (howto) => {
-      setSavedHowTos([...savedHowTos, howto]);
-    };
-
-    useEffect(() => {
-      console.log("heres the list");
-    }, []);
-
-    console.log(howtoList)
-
   return (
     <Router>
       <div className="App">
@@ -44,7 +24,7 @@ function App() {
         <Route exact path="/" component={Login} />
         <PrivateRoute path="/howto">
           <SavedHowTos list={savedHowTos} />
-          <AddHowTo setHowToList={setHowToList} />
+          <AddHowTo />
           <HeaderBar />
           <AuthContent />
           {/* <HowTos

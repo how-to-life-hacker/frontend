@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 let initialFormValues = {
@@ -30,7 +29,9 @@ export default function AddHowTo({ howtoList, setHowToList }) {
       })
       .catch((err) => console.log(err));
   }
+
   return (
+    <div><h3>Add a HowTo:</h3>
     <form onSubmit={onSubmit} className="add-howto-form">
       <input
         name="title"
@@ -63,5 +64,6 @@ export default function AddHowTo({ howtoList, setHowToList }) {
 
       <button>submit</button>
     </form>
+    </div>
   );
 }
