@@ -4,7 +4,7 @@ import { BrowserRouter as Route, Link } from "react-router-dom";
 import axios from "axios";
 console.log(Route);
 
-export default function Signup(props) {
+export default function Signin(props) {
   const {
     formValues,
     updateForm,
@@ -23,33 +23,29 @@ export default function Signup(props) {
   function onSubmit(event) {
     event.preventDefault();
 
-    axios.post('https://life-hacker-backend.herokuapp.com/register', formValues)
-    .then(res=> {
-      axios.get(`https://life-hacker-backend.herokuapp.com/user/${res.data.data.id}`)
-      .then(resolved => {
-        console.log(resolved.data.user)
-        setCurrentUser(initialUser)
-        setCurrentUser([resolved.data.user])
-      }) 
-      .catch(error => {
-        console.log(error)
+    axios
+      .post("https://life-hacker-backend.herokuapp.com/login", formValues)
+      .then((res) => {
+        console.log(res.data);
       })
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    .finally(() => {
-      setFormValues(initialFormValues)
-    })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setFormValues(initialFormValues);
+      });
+
+    setCurrentUser(initialUser);
+    setCurrentUser([formValues]);
   }
 
   return (
-    <div className="signup">
+    <div className="signin">
       <div className="form-links">
         <Link to="/signin">Sign In </Link>
         <Link to="/signup">Sign Up</Link>
       </div>
-      <h3>Sign Up Here</h3>
+      <h3>Log In Here</h3>
       <form onSubmit={onSubmit}>
         <label>
           Email:

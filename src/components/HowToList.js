@@ -4,7 +4,7 @@ import HowToCard from "./HowToCard";
 
 function HowToList(props) {
   const { howtos } = props;
-  console.log(howtos)
+  console.log(props);
 
   return (
     <div className="howto-list">

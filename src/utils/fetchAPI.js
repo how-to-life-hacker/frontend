@@ -2,7 +2,7 @@ import { axiosWithAuth } from './axiosWithAuth';
 
 export function fetchAPI() {
     return axiosWithAuth()
-        .post('/api/howtos')
+        .post('/howto')
         .then(res => {
             return res
         })

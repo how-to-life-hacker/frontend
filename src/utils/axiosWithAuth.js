@@ -6,7 +6,7 @@ export function axiosWithAuth() {
     return axios.create({
         baseURL: "https://life-hacker-backend.herokuapp.com",
         headers: {
-            Authorization: token
+            Authorization: `${token}`
         }
     });
 };

@@ -4,7 +4,7 @@ import { BrowserRouter as Route, Link } from "react-router-dom";
 import axios from "axios";
 console.log(Route);
 
-export default function Signin(props) {
+export default function Signup(props) {
   const {
     formValues,
     updateForm,
@@ -24,9 +24,20 @@ export default function Signin(props) {
     event.preventDefault();
 
     axios
-      .post("https://life-hacker-backend.herokuapp.com/login", formValues)
+      .post("https://life-hacker-backend.herokuapp.com/register", formValues)
       .then((res) => {
-        console.log(res.data);
+        axios
+          .get(
+            `https://life-hacker-backend.herokuapp.com/user/${res.data.data.id}`
+          )
+          .then((resolved) => {
+            console.log(resolved.data.user);
+            setCurrentUser(initialUser);
+            setCurrentUser([resolved.data.user]);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -34,18 +45,15 @@ export default function Signin(props) {
       .finally(() => {
         setFormValues(initialFormValues);
       });
-
-    setCurrentUser(initialUser);
-    setCurrentUser([formValues]);
   }
 
   return (
-    <div className="signin">
+    <div className="signup">
       <div className="form-links">
         <Link to="/signin">Sign In </Link>
         <Link to="/signup">Sign Up</Link>
       </div>
-      <h3>Log In Here</h3>
+      <h3>Sign Up Here</h3>
       <form onSubmit={onSubmit}>
         <label>
           Email:
