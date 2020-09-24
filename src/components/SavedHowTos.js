@@ -3,10 +3,6 @@ import { NavLink, Link } from "react-router-dom";
 
 function SavedHowTos({ list }) {
 
-  function onClick(event) {
-        window.location.reload();
-  }
-
   return (
     <div className="saved-list">
       <h3>Saved HowTos:</h3>
@@ -21,9 +17,6 @@ function SavedHowTos({ list }) {
           </NavLink>
         );
       })}
-      <div className="home-button">
-        <button onClick={onClick}>Refresh HowTo List</button>
-      </div>
     </div>
   );
 }

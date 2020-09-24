@@ -64,6 +64,7 @@ export default function AddHowTo({ howtoList, setHowToList }) {
 
         <button>Submit</button>
     </form>
+    <h5>Please click Refresh HowTo List Button below after submitting a new HowTo to view it.</h5>
     </div>
   );
 }
