@@ -31,7 +31,9 @@ export default function AddHowTo({ howtoList, setHowToList }) {
   }
 
   return (
-    <div><h3>Add a HowTo:</h3>
+    <div>
+      <center>
+      <h3>Add a HowTo:</h3>
     <form onSubmit={onSubmit} className="add-howto-form">
       <input
         name="title"
@@ -65,6 +67,7 @@ export default function AddHowTo({ howtoList, setHowToList }) {
         <button>Submit</button>
     </form>
     <h5>Please click Refresh HowTo List Button below after submitting a new HowTo to view it.</h5>
+      </center>
     </div>
   );
 }

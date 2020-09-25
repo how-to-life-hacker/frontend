@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import HowToCard from "./HowToCard";
+import styles from "styled-components";
+
+const HeaderStyle = styles.div`
+margin: 3rem;
+h1{
+    text-align: center;
+}
+`
 
 function AuthContent() {
   const [howtos, setHowTos] = useState([]);
@@ -22,7 +30,9 @@ function AuthContent() {
       {
         howtos.map(howto => (
           <>
+            <HeaderStyle>
               <HowToCard howto={howto} />
+            </HeaderStyle>
           </>
         ))
       }

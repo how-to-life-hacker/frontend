@@ -6,6 +6,9 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const HowToStyler = styles.div`
 background-color: #CDDFD9;
+box-shadow: 3px 3px 3px #000;
+border-radius: 1rem;
+padding: 1rem;
 `;
 
 const HowToCard = props => {

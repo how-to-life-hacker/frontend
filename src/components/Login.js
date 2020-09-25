@@ -32,7 +32,7 @@ const Login = () => {
 
   return (
     <div>
-      <h1>Welcome to LifeHacker!</h1>
+      <h3>Please log in below:</h3>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username:</label>
