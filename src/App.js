@@ -23,7 +23,7 @@ function App() {
         <Route exact path="/" component={Forms} />
         <Route exact path="/" component={Login} />
         <PrivateRoute path="/howto">
-          <SavedHowTos list={savedHowTos} />
+          {/* <SavedHowTos list={savedHowTos} /> */}
           <AddHowTo />
           <HeaderBar />
           <AuthContent />
